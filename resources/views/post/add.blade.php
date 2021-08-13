@@ -16,31 +16,29 @@
     <div class="container">
         <h1>THÊM BÀI VIÊT </h1>
         {!! Form::open(['url' => 'post/store', 'method' => 'POST']) !!}
-        <div class="form-group">
-            {!! Form::label('Title', null, ['for' => 'title']) !!}
-            {!! Form::text('title', null, ['id' => 'title', 'class' => 'form-control', 'placeholder' => 'Enter Title']) !!}
-        </div>
-        <div class="form-group">
-            {{-- cú pháp laravel colective Form::tên thẻ('name', value, [id, class, hoặc bất cứ thứ gì]) --}}
+            <div class="form-group">
+                {!! Form::label('Title', null, ['for' => 'title']) !!}
+                {!! Form::text('title', null, ['id' => 'title', 'class' => 'form-control', 'placeholder' => 'Enter Title']) !!}
 
-            {!! Form::label('content', null, ['for' => 'content']) !!}
-            {!! Form::textarea('content', null, ['id' => 'content', 'class' => 'form-control', 'placeholder' => 'Enter Content']) !!}
+                @error('title')
+                    <p class="alert alert-danger">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="form-group">
+                {{-- cú pháp laravel colective Form::tên thẻ('name', value, [id, class, hoặc bất cứ thứ gì]) --}}
 
-        </div>
+                {!! Form::label('content', null, ['for' => 'content']) !!}
+                {!! Form::textarea('content', null, ['id' => 'content', "class" => "form-control", 'placeholder' => 'Enter Content', ]) !!}
+                @error('content')
+                    <small class="alert alert-danger">{{ $message }}</small>
+                @enderror
 
-        {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
-
-
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
 
             </div>
-        @endif
+
+            {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+
+
         {!! Form::close() !!}
     </div>
 
