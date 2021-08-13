@@ -15,7 +15,7 @@
 <body>
     <div class="container">
         <h1>THÊM BÀI VIÊT </h1>
-        {!! Form::open(['url' => 'post/store', 'method' => 'POST']) !!}
+        {!! Form::open(['url' => 'post/store', 'method' => 'POST', 'files' => true]) !!}
             <div class="form-group">
                 {!! Form::label('Title', null, ['for' => 'title']) !!}
                 {!! Form::text('title', null, ['id' => 'title', 'class' => 'form-control', 'placeholder' => 'Enter Title']) !!}
@@ -29,6 +29,7 @@
 
                 {!! Form::label('content', null, ['for' => 'content']) !!}
                 {!! Form::textarea('content', null, ['id' => 'content', "class" => "form-control", 'placeholder' => 'Enter Content', ]) !!}
+                {!! Form::file('fileUpload', ["class" => "form-control-file"]) !!}
                 @error('content')
                     <small class="alert alert-danger">{{ $message }}</small>
                 @enderror
