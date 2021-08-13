@@ -20,3 +20,4 @@ Route::get('/', function () {
 Route::get('post/add', 'PostController@add');
 Route::post('post/store', 'PostController@store');
 Route::get('post/store', 'PostController@store');
+Route::get('post/show', 'PostController@show');
