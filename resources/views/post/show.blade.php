@@ -12,14 +12,16 @@
 </head>
 
 <body>
-    {{-- @php
-        // dd($posts);
-    @endphp --}}
+     {{-- flast session --}}
+    @if (session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
     <div class="container d-flex flex-wrap">
+
         @foreach ($posts as $post)
             <div class="card text-left col-4">
                 <a href="">
-                    <img src="{{ asset($post['thumnail']) }}" alt="" width="20", height="20">
+                    <img src="{{ URL::asset($post['thumnail']) }}" alt="" width="20" , height="20">
                 </a>
                 <div class="card-body">
                     <h4 class="card-title">{{ $post['title'] }}</h4>

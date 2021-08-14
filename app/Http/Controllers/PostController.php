@@ -54,13 +54,14 @@ class PostController extends Controller
         // b7: tạo và gửi dữ liệu form lên server thông qua mảng dữ liệu lưu trong input 
         Post::create($input);
 
-       
-
-        // return view('post.show', compact('posts'));
+        return redirect('post/show')->with('success', 'Thêm bài viết thành công!');
     }
 
-    function show (){
-        $posts = Post::all();
+    function show()
+    {
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        // $url = url()->current();
+        // echo $url;
         return view('post.show', compact('posts'));
     }
 }

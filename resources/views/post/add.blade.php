@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,28 +17,29 @@
     <div class="container">
         <h1>THÊM BÀI VIÊT </h1>
         {!! Form::open(['url' => 'post/store', 'method' => 'POST', 'files' => true]) !!}
-            <div class="form-group">
-                {!! Form::label('Title', null, ['for' => 'title']) !!}
-                {!! Form::text('title', null, ['id' => 'title', 'class' => 'form-control', 'placeholder' => 'Enter Title']) !!}
+        @csrf
+        <div class="form-group">
+            {!! Form::label('Title', null, ['for' => 'title']) !!}
+            {!! Form::text('title', null, ['id' => 'title', 'class' => 'form-control', 'placeholder' => 'Enter Title']) !!}
 
-                @error('title')
-                    <p class="alert alert-danger">{{ $message }}</p>
-                @enderror
-            </div>
-            <div class="form-group">
-                {{-- cú pháp laravel colective Form::tên thẻ('name', value, [id, class, hoặc bất cứ thứ gì]) --}}
+            @error('title')
+                <p class="alert alert-danger">{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="form-group">
+            {{-- cú pháp laravel colective Form::tên thẻ('name', value, [id, class, hoặc bất cứ thứ gì]) --}}
 
-                {!! Form::label('content', null, ['for' => 'content']) !!}
-                {!! Form::textarea('content', null, ['id' => 'content', "class" => "form-control", 'placeholder' => 'Enter Content', ]) !!}
-                {!! Form::file('fileUpload', ["class" => "form-control-file"]) !!}
-                @error('content')
-                    <small class="alert alert-danger">{{ $message }}</small>
-                @enderror
+            {!! Form::label('content', null, ['for' => 'content']) !!}
+            {!! Form::textarea('content', null, ['id' => 'content', 'class' => 'form-control', 'placeholder' => 'Enter Content']) !!}
+            {!! Form::file('fileUpload', ['class' => 'form-control-file']) !!}
+            @error('content')
+                <small class="alert alert-danger">{{ $message }}</small>
+            @enderror
 
 
-            </div>
+        </div>
 
-            {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+        {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
 
 
         {!! Form::close() !!}
